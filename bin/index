@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+var exec = require( 'child_process' ).exec;
+
+var path = require( 'path' );
+
+var nodePath = path.join( __dirname, '../extra/node' );
+
+var indexPath = path.join( __dirname, '../lib/index.js' );
+
+var command   = process.argv[ 2 ];
+
+childProcess  = null
+
+function start() {
+  if ( null !== childProcess ) {
+    try {
+      childProcess.exit();
+    } catch( e ) {}
+  }
+  childProcess = exec( nodePath + ' --harmony ' + indexPath );
+  childProcess.stdout.pipe( process.stdout );
+  childProcess.stderr.pipe( process.stderr );
+  childProcess.on( 'SIGINT', start );
+  childProcess.on( 'SIGOUT', start );
+  childProcess.on( 'exit', start );
+  childProcess.on( 'uncaughtException', start );
+}
+
+if( 'start' === command ) {
+  start();
+} else if( 'stop' === command ) {
+  process.exit();
+}

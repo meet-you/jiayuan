@@ -1,0 +1,29 @@
+{
+  "name": "girl",
+  "version": "1.0.6",
+  "reporsitory": "",
+  "description": "common pamram generator for ot",
+  "keywords": [
+    "hydra",
+    "biz"
+  ],
+  "author": "yuhan.wyh<yuhan.wyh@alibaba-inc.com>",
+  "dependencies": {
+    "coffee-script-es6" : "*",
+    "cheerio"           : "*",
+    "thunkify"          : "*",
+    "request"           : "*",
+    "mysql"             : "*",
+    "co"                : "*",
+    "options-stream"    : "*",
+    "event-pipe"        : "*"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": "0.11.8"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}
